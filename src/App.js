@@ -1,28 +1,58 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { connect } from 'react-redux';
 import './App.css';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faSmile,
+	 faBone,
+	 faArrowAltCircleRight,
+	 faSkull,
+	 faBolt,
+	 faQuestionCircle,
+	 faFrown
+       } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fab,
+	    faSmile,
+	    faBone,
+	    faArrowAltCircleRight,
+	    faSkull,
+	    faBolt,
+	    faFrown,
+	    faQuestionCircle,
+);
+
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props){
+	super(props);
+	const {dispatch} = this.props;
+    }
+    render() {
+	const {alert} = this.props;
+	return (
+	    <div className="app">
+              { alert.message &&
+		  <div className="paper">
+			<div className={`alert ${alert.type}`}>{alert.message}</div>
+		      </div>
+                  }
+		  <div>Secret Hitler</div>
+            </div>
+	);
+    }
 }
 
-export default App;
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
+
+const connectedApp = connect(mapStateToProps)(App);
+export { connectedApp as App }; 
+
+
