@@ -1,0 +1,33 @@
+.chat {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid green;
+    flex-grow: 1;
+}
+
+.chatitem {
+    flex-grow: 1;
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid red;
+    text-align: center;
+		   
+}
+
+.chattime {
+    font-size: 80%;
+    background: green;
+    color: white;
+    padding: 5px;
+}
+.chatmessage {
+    flex-grow: 1;
+    padding: 5px;
+}
+.chatfrom {
+    background: red;
+    font-size: 120%;
+    padding: 5px;
+		   
+}

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import { connect } from 'react-redux';
+import { Login } from './components/login';
 import './App.css';
-
+import {Chat} from './components/chat';
+import {Connector} from './components/connector';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSmile,
@@ -26,12 +27,9 @@ library.add(fab,
 
 
 class App extends Component {
-    constructor(props){
-	super(props);
-	const {dispatch} = this.props;
-    }
+    
     render() {
-	const {alert} = this.props;
+	const {alert, authentication} = this.props;
 	return (
 	    <div className="app">
               { alert.message &&
@@ -39,16 +37,21 @@ class App extends Component {
 			<div className={`alert ${alert.type}`}>{alert.message}</div>
 		      </div>
                   }
-		  <div>Secret Hitler</div>
+		  
+		  { authentication.loggedIn ? null: <Login/> }
+		  { authentication.loggedIn ? <Connector/> : null }
+		  { authentication.loggedIn ? <Chat/> : null }
+		  
             </div>
 	);
     }
 }
 
 function mapStateToProps(state) {
-    const { alert } = state;
+    const { alert,authentication } = state;
     return {
-        alert
+        alert,
+	authentication,
     };
 }
 
