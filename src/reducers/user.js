@@ -1,4 +1,4 @@
-let user =JSON.parse(localStorage.getItem('SecretHitlerUser'));
+let user =JSON.parse(sessionStorage.getItem('SecretHitlerUser'));
 
 const initialState = user ? { loggedIn: true, user } : {};
 

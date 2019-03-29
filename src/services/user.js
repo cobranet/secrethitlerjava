@@ -25,7 +25,7 @@ function login(username, password) {
 	    if (response.status===200 ){
 	    const token = response.headers.get("authorization");
 	    const user = {email:username,token:token};
-	    localStorage.setItem("SecretHitlerUser",JSON.stringify(user));
+	    sessionStorage.setItem("SecretHitlerUser",JSON.stringify(user));
 		return user;
 	    }else{
 		const error = response.message || response.statusText;
@@ -37,7 +37,7 @@ function login(username, password) {
 
 function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('SecretHitlerUser');
+    sessionStorage.removeItem('SecretHitlerUser');
 }
 
 

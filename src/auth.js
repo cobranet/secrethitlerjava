@@ -1,6 +1,6 @@
 export function authHeader() {
     // return authorization header with jwt token
-    let user = JSON.parse(localStorage.getItem('SecretHitlerUser'));
+    let user = JSON.parse(sessionStorage.getItem('SecretHitlerUser'));
     if (user && user.token) {
         return { 'Authorization':  user.token };
     } else {
@@ -8,5 +8,5 @@ export function authHeader() {
     }
 }
 export function currentUser(){
-    return JSON.parse(localStorage.getItem('SecretHitlerUser'));
+    return JSON.parse(sessionStorage.getItem('SecretHitlerUser'));
 }

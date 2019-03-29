@@ -37,7 +37,7 @@ class Chat extends React.Component {
 	const {chat} = this.props;
 	return (
 	    <div className="chat" >
-	      {chat.map((item,i)=>this.drawItem(item,i))}
+	      {chat.lobby.map((item,i)=>this.drawItem(item,i))}
 
 		<input
 		     onChange={this.handleChange}
